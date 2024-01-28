@@ -2,13 +2,17 @@ import { IoIosPeople } from "react-icons/io";
 import { FcBusinessman } from "react-icons/fc";
 import { FcBusinesswoman } from "react-icons/fc";
 import { BsBoxArrowInRight } from "react-icons/bs";
-import { useState } from "react";
+// import { useState } from "react";
 import Form from "./Form";
 
-const Sidebar = ({ handleFilter }) => {
-  const [showForm, setShowForm] = useState(false);
+const Sidebar = ({ handleFilter, showForm, setShowForm, onClickSignOut }) => {
+  const onClickSignOutHandler = (e) => {
+    onClickSignOut(true);
+  };
+  // const [showForm, setShowForm] = useState(false);
+
   return (
-    <div className="bg-[#334155] h-screen ">
+    <div className="bg-[#334155] h-screen z-50 ">
       <div className=" flex flex-col mx-auto justify-center py-3">
         <div className="flex flex-col justify-center items-center">
           <h1 className="font-[Aguafina] font-bold md:text-8xl text-4xl text-white  ">
@@ -52,11 +56,7 @@ const Sidebar = ({ handleFilter }) => {
         </div>
         <div
           className="flex w-15 justify-center items-center space-x-4 mx-auto rounded-lg bg-green-600 hover:bg-green-500 transition py-1.5 pl-5 pr-8   mt-5"
-          onClick={() => {
-            {
-              setShowForm(true);
-            }
-          }}
+          onClick={onClickSignOutHandler}
         >
           <span className="text-white text-3xl">
             <BsBoxArrowInRight />
@@ -66,7 +66,7 @@ const Sidebar = ({ handleFilter }) => {
           </button>
         </div>
       </div>
-      {showForm && <Form closeForm={setShowForm} />}
+      {/* {showForm && <Form closeForm={setShowForm} />} */}
     </div>
   );
 };

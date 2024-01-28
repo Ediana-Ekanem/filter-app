@@ -5,6 +5,12 @@ import Data from "../Data";
 
 const Home = () => {
   const [filteredData, setFilteredData] = useState(Data);
+  const [showForm, setShowForm] = useState(false);
+  // console.log(showForm);
+
+  const onClickSignOutHandler = (e) => {
+    setShowForm(e);
+  };
 
   const handleFilter = (gender) => {
     if (gender === "all") {
@@ -19,10 +25,15 @@ const Home = () => {
     <div>
       <div className="grid grid-cols-12 gap-4 bg-[#eae9e5]  ">
         <div className="col-span-3 sticky top-0 h-screen">
-          <Sidebar handleFilter={handleFilter} />
+          <Sidebar
+            handleFilter={handleFilter}
+            // showForm={showForm}
+            // setShowForm={setShowForm}
+            onClickSignOut={onClickSignOutHandler}
+          />
         </div>
         <div className="col-span-9 overflow-y-auto h-full  w-full  py-32 ">
-          <List data={filteredData} />
+          <List data={filteredData} showForm={showForm} />
         </div>
       </div>
     </div>

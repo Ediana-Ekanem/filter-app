@@ -1,6 +1,9 @@
-const List = ({ data }) => {
+import Form from "./Form";
+
+const List = ({ data, showForm }) => {
+  console.log(showForm);
   return (
-    <div className=" overflow-y-auto my-10 ">
+    <div className=" overflow-y-auto my-10  ">
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 ">
         {data.map((dataItem) => (
           <div
@@ -28,6 +31,7 @@ const List = ({ data }) => {
                 contact
               </button>
             </div>
+            {showForm && <Form showForm={showForm} />}
           </div>
         ))}
       </div>
